@@ -1,8 +1,8 @@
 import './App.css';
-import WeatherCard from './components/WeatherCard';
+import WeatherDashboard from './components/WeatherDashboard';
 
 function App() {
-  return <WeatherCard></WeatherCard>;
+  return <WeatherDashboard></WeatherDashboard>;
 }
 
 export default App;

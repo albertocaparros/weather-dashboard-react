@@ -1,13 +1,14 @@
 import React from 'react';
 import { WeatherData } from '../../types/weather';
 import styles from './WeatherCard.module.css';
-import { kelvinToCelsius } from '../../utils/conversions';
+import { kelvinToCelsius, kelvinToFahrenheit } from '../../utils/conversions';
 
 interface WeatherCardProps {
   weatherData: WeatherData;
+  unit: 'C' | 'F';
 }
 
-const WeatherCard: React.FC<WeatherCardProps> = ({ weatherData }) => {
+const WeatherCard: React.FC<WeatherCardProps> = ({ weatherData, unit }) => {
   const {
     name,
     main: { temp, humidity, pressure, temp_max, temp_min, feels_like },
@@ -17,27 +18,30 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ weatherData }) => {
   } = weatherData;
   const weatherCondition = weather[0];
 
+  const convertTemp = unit === 'C' ? kelvinToCelsius : kelvinToFahrenheit;
+  const unitSymbol = unit === 'C' ? '°C' : '°F';
+
   return (
     <div className={styles.card}>
       <h2 className={styles.title}>
         {name}, {country}
       </h2>
       <p className={styles.text}>
-        <strong>Temperature:</strong> {kelvinToCelsius(temp)} °C
+        <strong>Temperature:</strong> {convertTemp(temp)} {unitSymbol}
       </p>
       {temp !== feels_like && (
         <p className={styles.text}>
-          <strong>Feels like:</strong> {kelvinToCelsius(feels_like)} °C
+          <strong>Feels like:</strong> {convertTemp(feels_like)} {unitSymbol}
         </p>
       )}
       {temp !== temp_max && (
         <p className={styles.text}>
-          <strong>Max:</strong> {kelvinToCelsius(temp_max)} °C
+          <strong>Max:</strong> {convertTemp(temp_max)} {unitSymbol}
         </p>
       )}
       {temp !== temp_min && (
         <p className={styles.text}>
-          <strong>Min:</strong> {kelvinToCelsius(temp_min)} °C
+          <strong>Min:</strong> {convertTemp(temp_min)} {unitSymbol}
         </p>
       )}
       <p className={styles.text}>

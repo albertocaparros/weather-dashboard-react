@@ -1,0 +1,22 @@
+.forecastContainer {
+  margin-top: 1rem;
+  padding: 1rem;
+
+  border-radius: 8px;
+}
+
+.forecastGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.forecastItem {
+  flex: 1 1 100px;
+  text-align: center;
+
+  padding: 0.5rem;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}

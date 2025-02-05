@@ -19,3 +19,27 @@
 .error {
   color: red;
 }
+
+.favorites {
+  margin-top: 1rem;
+}
+
+.favoritesList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.favoriteButton {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+}
+
+.favoriteButton:hover {
+  background: #222;
+}
